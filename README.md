@@ -536,6 +536,16 @@ join teams as mentee_team on mentee.team_id = mentee_team.team_id
 join teams as mentor_team on mentor.team_id = mentor_team.team_id
 where mentee_team.wins > mentor_team.wins;
 
+#Retrieve the teams and the corresponding match ID for teams that competed against each other at Old Trafford on January 15, 2024, at 3:30 PM.
+SELECT team_name, match_team_pairings.match_id
+	FROM teams
+    JOIN match_team_pairings ON teams.team_id = match_team_pairings.team_id
+    JOIN matches ON matches.match_id = match_team_pairings.match_id
+    WHERE matches.match_date = '2024-01-15'
+    AND matches.match_time = '15:30:00'
+    AND matches.match_loc = 'Old Trafford';
+
+
 
 
 
